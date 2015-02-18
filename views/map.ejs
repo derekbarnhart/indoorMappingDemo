@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app="mapApp">
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_modules/leaflet/dist/leaflet.css">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+    <body ng-controller="mainCtrl">
+
+    <a href="/" class="btn btn-primary" style="margin:20px;">Upload Demo</a>
+    <div class="map-application">
+
+        <div style="width:50%; padding:30px; float:left;">
+            <table class="table">
+                <tr>
+                    <th>Name</th>
+                    <th>Vendor</th>
+                    <th>Active</th>
+                    <th>x</th>
+                    <th>y</th>
+                </tr>
+                <tr ng-repeat="beacon in beacons" ng-class="{'danger':!beacon.active}">
+                    <td>{{beacon.name}}</td>
+                    <td>{{beacon.vendor}}</td>
+                    <td>
+                        <button class="btn btn-link">
+                            {{beacon.active ? "deactivate":"activate" }}
+                        </button>
+                    </td>
+                    <td>{{beacon.x}}</td>
+                    <td>{{beacon.y}}</td>
+                </tr>
+
+            </table>
+
+
+        </div>
+
+        <div id="map" class="map" style="width:50%; float:right;"></div>
+    </div>
+
+    <script src="bower_modules/leaflet/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.3.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.1.0/lodash.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.13/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.12.0/ui-bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.12.0/ui-bootstrap-tpls.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
